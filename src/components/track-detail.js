@@ -15,7 +15,7 @@ import MarkDown from './md-content';
 
 /**
  * Track Detail component renders the main content of a given track:
- * author, durationInSeconds, number of views, modules list, among other things.
+ * author, length, number of views, modules list, among other things.
  * It provides access to the first module of the track.
  */
 const TrackDetail = ({ track }) => {
@@ -24,7 +24,7 @@ const TrackDetail = ({ track }) => {
     description,
     thumbnail,
     author,
-    durationInSeconds,
+    length,
     modulesCount,
     modules,
     numberOfViews,
@@ -50,7 +50,7 @@ const TrackDetail = ({ track }) => {
             </IconAndLabel>
             <IconAndLabel>
               <IconTime width="14px" />
-              <div>{humanReadableTimeFromSeconds(durationInSeconds)}</div>
+              <div>{humanReadableTimeFromSeconds(length)}</div>
             </IconAndLabel>
           </DetailItem>
           <DetailItem>
@@ -77,9 +77,9 @@ const TrackDetail = ({ track }) => {
               {modules.map((module) => (
                 <li key={module.title}>
                   <div>{module.title}</div>
-                  <ModuledurationInSeconds>
-                    {humanReadableTimeFromSeconds(module.durationInSeconds)}
-                  </ModuledurationInSeconds>
+                  <Modulelength>
+                    {humanReadableTimeFromSeconds(module.length)}
+                  </Modulelength>
                 </li>
               ))}
             </ul>
@@ -193,7 +193,7 @@ const ModuleListContainer = styled.div({
   },
 });
 
-const ModuledurationInSeconds = styled.div({
+const Modulelength = styled.div({
   marginLeft: 30,
   color: colors.grey.light,
 });
